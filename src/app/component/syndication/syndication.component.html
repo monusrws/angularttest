@@ -1,0 +1,33 @@
+<section class="about-us-banner" *ngIf="syndicationBannerImage!=''">
+    <img src="{{syndicationBannerImage}}" alt="">
+</section>
+<div class="banner-menu-link" >
+    <ul>
+        <li><a href="{{siteUrl}}">Home</a></li>
+        <li><span>{{syndicationTitle}}</span></li>
+    </ul>
+</div>
+<div class="container">
+<section class="about-us-content">
+    <div class="main-content" [innerHTML] ="syndicationContent">
+        
+    </div>
+</section>
+
+<section class="title-heading" *ngIf="syndicationPost?.length">
+	<div class="title-heading-content synd_title_heading">
+			<h3>Syndication Catalogues</h3>
+		</div>
+	<div class="row">
+          
+					<div class="col-md-3 col-sm-6 col-xs-12 synd_catalogue_blocks" *ngFor="let singlerow of syndicationPost">
+					 <a href = "{{singlerow.shows_url}}" target = "_blank">
+					    <div class="catalogue-block">
+					        <img src="{{singlerow.imageurl}}">
+					         <div class="catalogue-block--name"><h4>{{singlerow.title}}</h4></div>
+					    </div>
+					 </a>
+					</div>
+    </div>
+</section>
+<div class="know-more-block"><a href="http://www.onelifestudios.in/" target= "_blank">know more</a></div>

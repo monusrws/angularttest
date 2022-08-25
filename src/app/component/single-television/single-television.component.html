@@ -1,0 +1,112 @@
+
+<div class="main-wrapper">
+   
+    <div class="banner-menu-link">
+      <ul>
+                    <li><a href="{{siteurl}}">Home / New Release</a></li>
+                    <li><span><a href="{{siteurl}}/television">Television</a></span></li>
+                </ul>
+        
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+      <section class="single-page-content">
+        
+        <div class="single-heading-title">
+          <p>{{singleTelevisionTitle}}</p>
+        </div>
+        <div class="single-heading-date">
+         
+          <div class="single-date-left">{{singleTelevisionDate}}</div>
+          
+          <div class="single-img-right"><button class="show-share" (click)="showShare=!showShare"><img src= "{{singleTelevisionshare_img}}"></button></div>
+          <div class="shareicons-img"  *ngIf="showShare">
+
+            <div class="single-icon">
+            
+              <a target="_blank" *ngIf="facebook_switch!=''"  href="https://www.facebook.com/sharer.php?u={{televisionUrl}}"><i class="icon-facebook"></i></a>
+           
+               <a target="_blank" *ngIf="instagram_switch!=''" href="https://www.instagram.com/"> <i class="icon-instagram"></i></a>
+            
+                <a target="_blank" *ngIf="linkedin_switch!=''" href="http://www.linkedin.com/share?url={{televisionpermalink}}"><i class="icon-linkedin icon-design"></i></a>
+              
+                <a target="_blank" *ngIf="envelope_gmail_switch!=''" href="mailto:?subject={{sitename}} | {{singleTelevisionTitle}}&body={{televisionpermalink}}>"><i class="icon-emails icon-design"></i></a>
+             
+                <a target="_blank" *ngIf="like_switch!=''" href="mailto:?subject={{sitename}} | {{singleTelevisionTitle}}&body={{televisionpermalink}}"><i class="icon-like icon-design"></i></a>
+             
+             
+            </div>
+          </div>
+        </div>
+        <div class="main-single-detail">
+          
+          <img src="{{singleTelevisionnews_banner_img}}">
+          <div [innerHtml]="singleTelevisionContent"> </div>
+        </div>
+      </section>
+    </div>
+       </div>
+
+       <section class="cast-block" *ngIf="cast_details?.length">
+          <div class="cast-heading"><h2>Cast</h2></div>
+          <div class="swiper-container cast-container">
+            <owl-carousel-o [options]="singleTelOptions">
+              <ng-container *ngFor="let singlerow of cast_details">
+                  <ng-template carouselSlide [id]="singlerow.id">
+                    <div class="cast-name">
+                      <img src="{{singlerow.image}}">
+                      <h4>{{singlerow.name}}</h4>
+                      <h5>{{singlerow.designation}}</h5>
+      
+                    </div>
+                    </ng-template>
+                </ng-container>
+              </owl-carousel-o>      
+            <!-- <swiper [config]= "castconfig">
+            <div class="swiper-wrapper">
+              
+              <div class="swiper-slide" *ngFor="let singlerow of cast_details">
+                <div class="cast-name">
+                <img src="{{singlerow.image}}">
+                <h4>{{singlerow.name}}</h4>
+                <h5>{{singlerow.designation}}</h5>
+
+              </div>
+              </div>
+           
+            </div>
+           
+            <div class="swiper-button-next"><i class="icon-next-btn"></i></div>
+            <div class="swiper-button-prev"><i class="icon-prev-btn"></i></div>
+          </swiper> -->
+          </div>
+       </section>
+       
+
+      <section class="related-news-content" *ngIf="television_relatedpost?.length">
+        <div class="related-news-heading"><h2>Related Shows</h2></div>
+        <div class="related-news-blocks">
+          <div class="row">
+            
+          <div class="col-12  col-sm-12  col-md-6  col-lg-3 col-xl-3" *ngFor="let singlerow of television_relatedpost">
+          <div class="img-block">
+                  <img src="{{singlerow.imageurl}}" > 
+                  <div class="ott-content-type">
+                    <h3>{{singlerow.type}}</h3>
+                    <div class="channel-details">
+                      <h1>{{singlerow.title}}</h1>
+                      <h4>{{singlerow.channel}}</h4>
+                    </div>
+                    <a href="{{singlerow.permalink}}">Read More</a>
+                  </div>
+                </div>
+          </div>
+         
+          </div>
+        </div>
+      </section>
+     
+   
+    </div>
+     

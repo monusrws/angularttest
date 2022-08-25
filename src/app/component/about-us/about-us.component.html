@@ -1,0 +1,48 @@
+<section class="about-us-banner" *ngIf="aboutBannerImage !=''">
+    <img src="{{aboutBannerImage}}" alt="">
+</section>
+
+		<div class="banner-menu-link">
+				<ul>
+                    <li><a href="{{ siteurl }}">Home</a></li>
+                    <li><span>{{ aboutTitle }}</span></li>
+                </ul>
+				
+			</div>
+		<div class="container">
+			<section class="about-us-content">
+				<div class="main-content">
+					<p [innerHtml] ="aboutContent"></p>
+				</div>
+			</section>
+			<section class="title-heading aboutus_title_heading">
+				<div class="title-heading-content about-us--heading">
+					<h3>{{aboutCoreTeamHeading}}</h3>
+				</div>
+				
+				<div class="title-details" *ngIf="aboutPost?.length">
+					
+				<div class="title-heading-details" *ngFor="let singleRow of aboutPost">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							 <div class="show-mobile"><h2>{{singleRow.name}}</h2>
+							    <h4>{{singleRow.designation}}</h4></div>
+							<div class="aboutus-img"><img src="{{singleRow.image}}" class="img-fluid"></div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+						    <div class="title-heading-block  about-us--heading">
+							    <div class="hide-mobile"><h2>{{singleRow.name}}</h2>
+							    <h4>{{singleRow.designation}}</h4></div>
+							    <p class="hide-about-us-mobile" [innerHtml] = "singleRow.description"></p>
+							<div class="show-only-mobile show-aboutus"> <button class="main-accordion hide-block"></button>
+							    <div class="panel show-block"><p [innerHtml] = "singleRow.description"></p></div></div>
+						    </div>
+					    </div>
+					</div>
+				</div>
+				
+				</div>
+						
+			</section>
+			
+		</div>

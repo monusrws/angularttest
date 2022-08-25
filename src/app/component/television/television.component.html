@@ -1,0 +1,130 @@
+<section class="about-us-banner" *ngIf="televisionBannerImage !=''" >
+    <img src="{{televisionBannerImage}}" alt="">
+</section>
+<div class="banner-menu-link">
+    <ul>
+        <li><a href="{{siteurl}}">Home</a></li>
+        <li><span>{{televisionTitle}}</span></li>
+    </ul>
+</div>
+<div class="container">
+    <section class="about-us-content">
+            <div class="main-content">
+            
+            <p [innerHtml]="televisionContent"></p>
+        </div>
+    </section>
+</div>
+
+<section class="title-heading ott-heading" *ngIf="televisionNewRelease?.length">
+	<div class="title-heading-content">
+		<h3>New Series</h3>
+	</div>
+		<div class="ott-container">
+			<div class="swiper-container ott-slider">
+				<swiper [config]= "ottconfig">
+			    <div class="swiper-wrapper">
+			       
+			      <div class="swiper-slide" *ngFor="let singlerow of televisionNewRelease">
+			      		<div class="img-block">
+							<a href="{{singlerow.permalink}}"><img src="{{singlerow.imageurl}}" > </a>
+							<div class="ott-content-type">
+								<h3>{{singlerow.type}}</h3>
+								<div class="channel-details">
+									<h1>{{singlerow.title}}</h1>
+									<h4></h4>
+								</div>
+								<a href="{{singlerow.permalink}}">Read More</a>
+							</div>
+						</div>
+					</div>
+				
+                </div>
+			    <!-- Add Pagination -->
+			    <div class="swiper-pagination ott-slider-pagination"></div>
+				</swiper>
+			 </div>
+		</div>
+</section>
+
+<section class="title-heading ott-heading trailer-section">
+	<div class="title-heading-content">
+		<h3>Watch Trailers</h3>
+	</div>
+	<div class="ott-container">
+			<div class="swiper-container ott-slider-trailer">
+				<swiper [config]= "ottconfig">
+			    <div class="swiper-wrapper">
+			    	
+                <div class="swiper-slide" *ngFor="let singleSlide of televisionTrailers">
+			      <a href="javascript:void(0);" #videodata class="openVideoModal" (click)="showVideoModal(videodata.title,singleSlide.videoURL)"  [attr.data-video_url]="singleSlide.videoURL" title="{{singleSlide.title}}">
+			      		<div class="img-block">
+			      			<img [src]="singleSlide.imageURL" >
+						    <div class="ott-content-type">
+								<div class="video-icon"><i class="icon-play"></i></div>
+								<h5>{{singleSlide.title}}</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+			    
+			</div>
+			    <!-- Add Pagination -->
+			    <div class="swiper-pagination ott-slider-trailer-pagination"></div>
+			</swiper>
+			 </div>
+
+		</div>
+				
+			<div id="videoModal" class="videoModal modal fade" role="dialog" (click)="hideVideoModal()">
+               <div class="modal-dialog">
+               <!-- Modal content-->
+                    <div class="modal-content">
+                         <div class="modal-header">
+                              <h1 class="modal-title"></h1>
+                         	  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+					        	</button>
+                         </div>
+                         <div class="modal-body">
+                               <iframe src="" id="videoModal_Iframe" width="100%" height = "300px" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+                         </div>
+                         <div class="modal-footer"></div>
+                    </div>
+               	</div>
+            </div>
+</section>
+<section class="title-heading ott-heading">
+				<div class="title-heading-content">
+					<h3>Critically Acclaimed Series</h3>
+				</div>
+				
+				<div class="ott-container">
+					<div class="swiper-container ott-slider-acclaimed">
+						<swiper [config]= "ottSliderAcclaimed">
+					    <div class="swiper-wrapper">
+					    	
+					     <div class="swiper-slide" *ngFor="let singleSlide of televisionCategory">
+					      		<div class="img-block">
+									<a [href]="singleSlide.permalink">
+										<img [src]="singleSlide.imageurl" > </a>
+									<div class="ott-content-type">
+										<h3>{{singleSlide.type}}</h3>
+										<div class="channel-details">
+											<h1>{{singleSlide.title}}</h1>
+											<h4>{{singleSlide.channel}}</h4>
+										</div>
+										<a [href]="singleSlide.permalink">Read More</a>
+									</div>
+								</div>
+							</div>
+						
+	                    </div>
+					    <!-- Add Pagination -->
+					    <div class="swiper-pagination ott-slider-acclaimed-pagination"></div>
+					</swiper>
+					 </div>
+				</div>
+			
+			</section>
+

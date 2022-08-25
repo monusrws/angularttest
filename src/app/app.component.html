@@ -1,0 +1,183 @@
+<div id="app">
+  <header id="masthead" class="site-header">
+		<div class="container">
+				
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="header-wrapper">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="logo">
+											
+											<a href="/" routerLink="home">
+												                                               
+												<img src="{{logo}}" class="main-logo">
+											</a>
+                      <a href="/" routerLink="home">
+												
+												<img src="{{scrollLogo}}" class="on-scroll">
+											</a>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="social-icons">
+											
+										
+										</div>
+										<div class="menu">
+												<nav id="site-navigation" class="main-navigation ubermenu">
+                          <a class="menu-button ubermenu-responsive-toggle ubermenu-responsive-toggle-main ubermenu-skin-black-white-2 ubermenu-loc-header-menu ubermenu-responsive-toggle-content-align-left ubermenu-responsive-toggle-align-full ubermenu-responsive-toggle-icon-only " (click)="openMainmenu()" tabindex="0" data-ubermenu-target="ubermenu-main-7-header-menu-2"></a>
+                          <nav id="ubermenu-main-7-header-menu-2" class="ubermenu ubermenu-main ubermenu-menu-7 ubermenu-loc-header-menu ubermenu-responsive ubermenu-responsive-767 ubermenu-horizontal ubermenu-transition-shift ubermenu-trigger-hover_intent ubermenu-skin-black-white-2 ubermenu-has-border ubermenu-bar-align-full ubermenu-items-align-auto ubermenu-bound ubermenu-disable-submenu-scroll ubermenu-sub-indicators ubermenu-retractors-responsive ubermenu-submenu-indicator-closes ubermenu-touch ubermenu-mobile-view ubermenu-responsive-collapse">
+		                     <ul id="ubermenu-nav-main-7-header-menu" class="ubermenu-nav" data-title="Header Menu" >
+                         
+                          <li *ngFor="let singleMenu of headermenu"  class="ubermenu-item ubermenu-item-type-post_type ubermenu-item-object-page ubermenu-item ubermenu-item-level-0 ubermenu-column ubermenu-column-auto" [routerLinkActive]="['is-active']">
+                            <a class="ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only" href="{{singleMenu.permalink}}" tabindex="0" routerLink="{{singleMenu.permalink | lowercase}}" ><span class="ubermenu-target-title ubermenu-target-text">{{singleMenu.title}}</span></a>
+                          </li>
+                         
+                        </ul>
+                      </nav>
+												</nav><!-- #site-navigation -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+			        </div>
+		
+			</div>		
+
+	
+	</header><!-- #masthead -->
+  
+    <router-outlet></router-outlet>
+  
+  <footer>
+    <section class="footer-section">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about-us">
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="footer-inner-content">
+                 
+                <h3>{{ about_us_heading }}</h3>
+                <p>{{ about_us_content }}</p>
+              </div>
+            </div>
+              <div class="col-sm-5">
+                <div class="footer-inner-content">
+                <h3 class="useful-links">Useful Links</h3>
+                  <div class="row">
+                    <div class="col-sm-7 footer-about">
+                     <ul id="footermenu" class="menu">
+                      <li id="menu-item-1052" *ngFor="let singleMenu of footerMenu"   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-9 current_page_item menu-item">
+                        <a href="{{ singleMenu.permalink }}" aria-current="page" routerLink="{{singleMenu.permalink | lowercase}}">{{ singleMenu.title }}</a>
+                      </li>
+                     </ul>
+                    </div>
+                    <div class="col-sm-5 footer-tnc">
+                      <h5 class="terms"><a href="{{siteUrl}}terms-conditions/">Terms & Conditions</a></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="footer-inner-content">
+                  
+                  <h3></h3>
+                  <div class="footer-icons">
+                    <a href="{{ fb_url }} " target = "_blank"><i class="icon-facebook"></i></a>
+                    <a href="{{ twitter_url }}" target = "_blank"><i class="icon-twitter"></i></a>
+                    <a href="{{ youtube_url }} " target = "_blank"><i class="icon-youtube"></i></a>
+                    <a href="{{ insta_url }}" target = "_blank"><i class="icon-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-swastik-production">
+            <div class="row">
+                <div class="col-sm-6">
+                  
+                    <div><h3>{{ heading_addrss_footer }}</h3></div>
+                    <div class="swastik-prod-heading">	
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="swastik-address">
+                            <i class="icon-location"></i>
+                            <p>{{ addrss_footer }}</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="contact-us-portfolio">
+                              <div class="contact-details">
+                                
+                                <div class="contact-number-bullet-mail">
+                                  <img src="{{ call_image }}"></div>
+                                <div class="contact-number">{{ contact_footer }}</div>
+                              </div>	
+                              <div class="contact-mails">
+                                <div class="contact-number-bullet-mail">
+                                <img src="{{ mail_image }}">
+                                </div>
+      
+                                <div class="contact-mail"><a href="mailto:{{ email_footer }}" >{{email_footer}}</a>
+                                </div>	
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+      
+                <div class="col-sm-6">
+                  <div ><iframe width="100%" height="143" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Swastik%20House,%20166,%20S.V.%20Road,%20Near%20Andheri%20Subway,%20Andheri%20West,%20Mumbai%20-%20400058,%20Maharashtra.+(Swastik)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+                </div>
+            </div>
+          </div>
+          <div class="footer-world-of-swastik">
+    
+            <h3>{{ main_heading }}</h3>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="swastik-variants">
+                <img src="{{ image_one }}" class="footer-logo">
+                <div class="variant-content">
+                  <div><p><a href="{{ heading1url }}" target = "_blank">{{ heading1}}</a></p></div>
+                  <div><p><span></span></p></div>
+                  <div><p><a href="{{ heading2url }}" target = "_blank">{{ heading2}}</a></p></div>
+                </div>
+                
+              </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="swastik-variants">
+                <img src="{{ image_two }} " class="onelife">
+                <div class="variant-content-vfx">
+                  <div><p><a href="{{ heading3url }}" target = "_blank">{{ heading3}}</a></p></div>
+                  <div><p><span></span></p></div>
+                  <div><p><a href="{{ heading4url }}" target = "_blank">{{ heading4}}</a></p></div>
+                  <div><p><span></span></p></div>
+                  <div><p><a href="{{ heading5url }}" target = "_blank">{{ heading5}}</a></p></div>
+                </div>
+              </div>
+              
+            </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="copyright-content">
+              <p>&copy; {{copyright}}</p>
+            </div>
+            <div class="design-by">
+              <h5>Designed by <span><a href="http://www.rws.com/">RWS</a></span></h5>
+            </div>
+        </div>
+      </div>
+      
+    </section>
+  </footer>
+</div>

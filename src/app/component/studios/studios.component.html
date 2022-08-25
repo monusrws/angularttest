@@ -1,0 +1,41 @@
+<div class="main-wrapper">
+   
+        <section class="about-us-banner" *ngIf="studiosBannerImage!=''">
+            <img src="{{studiosBannerImage}}" alt="">
+        </section>
+    
+            <div class="banner-menu-link">
+                <ul>
+                    <li><a href="{{siteurl}}">Home</a></li>
+                    <li><span>{{studiosTitle}}</span></li>
+                </ul>
+            </div>
+            <div class="container">
+            <section class="about-us-content">
+                <div class="main-content">
+                    <h2>Studio Services</h2>
+                   <p [innerHtml]="studiosContent"></p>
+                </div>
+            </section>
+    
+    <section class="inner-studios-details" *ngIf="studioPost?.length">
+            
+           
+        <div class="studio-content" *ngFor="let singlwrow of studioPost">
+            <h3>{{singlwrow.title}}</h3>
+               <div class="row" *ngIf="singlwrow.slider_images?.length">
+                   
+                <div class="col-md-3 col-sm-6 col-xs-12 studio-column"  *ngFor="let singleimage of singlwrow.slider_images">
+                    <div class="stage-img">
+                        <img src="{{singleimage.images}}">
+                        <h6>{{singleimage.title}}</h6>
+                    </div>
+                </div>
+                
+                </div>
+            <div class="load-button"><a href="{{singlwrow.read_more_url}}" target = "_blank">load more</a></div>
+        </div>
+    
+    </section>
+
+</div>

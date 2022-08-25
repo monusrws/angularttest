@@ -1,0 +1,66 @@
+<link rel='stylesheet' id='sbi_styles-css'  href='http://swastik.wddemo.net/swastik-production/wp-content/plugins/instagram-feed-pro/css/sbi-styles.min.css?ver=5.9.1' media='all' />
+<script>
+    var sb_instagram_js_options = {"font_method":"svg","resized_url":"http:\/\/swastik.wddemo.net\/swastik-production\/wp-content\/uploads\/sb-instagram-feed-images\/","placeholder":"http:\/\/swastik.wddemo.net\/swastik-production\/wp-content\/plugins\/instagram-feed-pro\/img\/placeholder.png","br_adjust":""};
+    var sbiTranslations = {"share":"Share"};
+    </script>
+    <script src='http://swastik.wddemo.net/swastik-production/wp-content/plugins/instagram-feed-pro/js/sbi-scripts.min.js?ver=5.9.1'></script>
+<div class="main-wrapper">
+    <section class="about-us-banner" *ngIf="latestNewsBannerImage!=''">
+        <img src="{{latestNewsBannerImage}}" alt="">
+    </section>
+    <div class="banner-menu-link">
+        <ul>
+            <li><a href="{{siteurl}}">Home</a></li>
+            <li><span>{{latestNewsTitle}}</span></li>
+        </ul>
+    </div>
+    {{newsUrl}}
+    <div class="container">
+        <section id="tabs" class="latest-news">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">News</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Social Media</a>
+                         
+                        </div>
+                    </nav> 
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="row" *ngIf="latestNewsPost?.length">
+                                    
+                                <div class="col-12  col-sm-12  col-md-6  col-lg-4 col-xl-4" *ngFor="let singlerow of latestNewsPost">
+                                    <div class="news-box">
+                                        <div class="top-box">
+                                            <span class="logo-left"> <img src="{{singlerow.inner_logo}}" alt="" class="img-fluid"></span>
+                                            <span class="date float-right">{{singlerow.date}}</span>
+                                        </div>
+                                        <img src="{{singlerow.imageurl}}" alt="" class="img-fluid">
+                                        <div class="title">
+                                        {{singlerow.title}}
+                                        </div>
+                                        <div class="description" [innerHtml]="singlerow.content"></div>
+                                        <a href="{{singlerow.permalink}}" [routerLink]="[singlerow.permalink ]" class="readmore">Read more</a>
+                                    </div>
+                                </div>
+                          
+                        </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="row">
+                            <div class="col-sm-12 " [innerHtml]="instagramFeed">
+                                 
+                                </div>
+
+                                
+                        </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    </section>
+    
+    </div>
+</div>

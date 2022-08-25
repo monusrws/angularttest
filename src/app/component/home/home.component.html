@@ -1,0 +1,350 @@
+<div class="main-wrapper">
+    <section class="home-page-banner" *ngIf="homepage_slider?.length">
+        <div class="swiper-container home-page-slider">
+            <owl-carousel-o [options]="homeOptions">
+                <ng-container *ngFor="let singleslide of homepage_slider">
+                    <ng-template carouselSlide [id]="singleslide.id">
+                        <div class="slide-view" style="background-image: url('{{ singleslide.image }}')">
+                            <div class="home-page-title">
+                                <h1>{{ singleslide.title }}</h1>
+                                <a [href]="singleslide.permalink">Read more</a>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+           <!--  <swiper [config]="config"> -->
+            <!-- <div class="swiper-wrapper">
+
+                <div class="swiper-slide" *ngFor="let singleslide of homepage_slider">
+                    <div class="slide-view" style="background-image: url('{{ singleslide.image }}')">
+                        <div class="home-page-title">
+                            <h1>{{ singleslide.title }}</h1>
+                            <a [href]="singleslide.permalink">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="swiper-pagination swiper-home-banner"></div> -->
+
+            <!-- Add Arrows -->
+           <!--  <div class="swiper-button-next home-next"><i class="icon-next-btn"></i></div>
+            <div class="swiper-button-prev home-prev"><i class="icon-prev-btn"></i></div> -->
+           <!--  </swiper> -->
+        </div>
+    </section>
+
+    <!-- <section class="new-release" id ="new-id" *ngIf="homeNewRelease?.length">
+        <div class="new-release-heading">
+            <h2>New release</h2>
+        </div>
+
+        <div class="new-release-container">
+                <div class="swiper-container new-release-slider">
+                    <swiper [config]="newreleaseconfig">
+                    <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide" *ngFor="let singlerow of homeNewRelease">
+                            <div class="img-block">
+                                <a [href]="singlerow.permalink"><img [src]="singlerow.image_url" ></a>
+                                <div class="ott-content-type">
+                                    <h3>{{ singlerow.type}}</h3>
+                                    <div class="channel-details">
+                                        <h1>{{ singlerow.title}}</h1>
+                                        <h4></h4>
+                                    </div>
+                                    <a [href]="singlerow.permalink">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                   
+                    <div class="swiper-pagination new-release-pagination"></div>
+                    </swiper>
+                </div>
+                </div>
+        
+            <div class="below-new-release"></div>
+    </section> -->
+    <section class="new-release" id ="new-id" *ngIf="homeNewRelease?.length">
+        <div class="new-release-heading">
+            <h2>New release</h2>
+        </div>
+
+        <div class="new-release-container">
+            <owl-carousel-o [options]="newReOptions">
+                <ng-container *ngFor="let singlerow of homeNewRelease">
+                    <ng-template carouselSlide [id]="singlerow.id">
+                        <div class="img-block">
+                            <a [href]="singlerow.permalink"><img [src]="singlerow.image_url" ></a>
+                            <div class="ott-content-type">
+                                <h3>{{ singlerow.type}}</h3>
+                                <div class="channel-details">
+                                    <h1>{{ singlerow.title}}</h1>
+                                    <h4></h4>
+                                </div>
+                                <a [href]="singlerow.permalink">Read More</a>
+                            </div>
+                        </div>
+                        </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+                </div>
+    </section>
+
+    <section class="featured-work" id="id-featured">
+
+        <div class="container">
+            <div class="world-of-swastik-content">
+                <div class="swastik-heading">
+                    <h2>Featured Works</h2>
+                </div>
+            </div>
+        </div>
+
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let singlerow of homeFeaturedWork">
+                <ng-template carouselSlide [id]="singlerow.id">
+                 
+                  <iframe [src]="sanitize(singlerow.videoURL)" width="100%"
+                  height="420px" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+    
+              <img *ngIf="singlerow.video_select ==''" [src]="singlerow.image_url" alt="" />
+    
+              <div class="inner">
+                  <h5>{{ singlerow.title}}</h5>
+                  <div class="featured-date">
+                      <h6>2017</h6>
+                      <h6>{{ singlerow.type}}</h6>
+                  </div>
+                  <p>{{ singlerow.content}}</p>
+                  <a [href]="singlerow.permalink">Read more</a>
+              </div>
+                </ng-template>
+              </ng-container>
+        
+        </owl-carousel-o>
+
+    </section>
+    <section class="world-of-swastik">
+
+        <div class="container">
+            <div class="world-of-swastik-content">
+                <div class="swastik-heading">
+                    <h2>{{ homeWorldSwastikHeading }}</h2>
+                </div>
+                <div class="swastik-content">
+                    <p [innerHtml]="homeWorldSwastikDesc"></p>
+                </div>
+
+
+                <div class="world-of-swastik-wrapper" *ngIf="homeWorldSwastikImages?.length">
+                    <div class="row">
+                       
+                        <div class="col-sm-4" *ngFor="let singlerow of homeWorldSwastikImages">
+                            <div class="world-of-swastik-block">
+                                <img src="{{singlerow.image}}">
+                                <a href="{{singlerow.url}}" target="_blank">
+                                    <h4>{{singlerow.title}}</h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="">		
+        <div class="timeline" data-autoplay="5000" data-speed="700">
+            <!-- Swiper timeline -->
+          <div class="container">
+                        <div class="world-of-swastik-content">
+                            <div class="swastik-heading"><h2>Awards</h2></div>
+                        </div>
+                    </div>
+            <div class="swiper-container timeline-contents">
+                <owl-carousel-o [options]="timelineConOptions">
+                    <ng-container *ngFor="let singleslide of homeAwards">
+                        <ng-template carouselSlide [id]="singleslide.id">
+                            <div class="timeline-wrapper">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                      <div class="award-title">
+                                        <div class="award-block"><h5><img [src]="singleslide.tropy_image"></h5></div>
+                                        <div class="left-block">
+                                            <h6>{{singleslide.title }}</h6>
+                                            <p [innerHtml]="singleslide.content"></p>
+                                            
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-6"> <p><img [src]="singleslide.imageurl"></p></div>
+                                </div>
+                            </div>
+                         </ng-template>
+                    </ng-container>
+                </owl-carousel-o>            
+                <!-- <swiper [config]="timelineContentsconfig"> -->
+                <!-- <div class="swiper-wrapper">
+                   
+                            <div class="swiper-slide" *ngFor="let singleslide of homeAwards" data-year="" >
+                            <div class="timeline-wrapper">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                          <div class="award-title">
+                                            <div class="award-block"><h5><img [src]="singleslide.tropy_image"></h5></div>
+                                            <div class="left-block">
+                                                <h6>{{singleslide.title }}</h6>
+                                                <p [innerHtml]="singleslide.content"></p>
+                                                
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-6"> <p><img [src]="singleslide.imageurl"></p></div>
+                                    </div>
+                                </div>
+                            </div>
+                      
+        
+                </div> -->
+            <!-- </swiper> -->
+            </div>
+              <div class="swiper-container timeline-dates">
+                
+                <owl-carousel-o [options]="timelineConDataOptions">
+                    <ng-container *ngFor="let singleSlide of homeAwardYear">
+                        <ng-template carouselSlide [id]="singleSlide.id"  >
+                            <div class="swiper-slide"><div>{{singleSlide.name}}</div></div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>            
+                <!-- <swiper [config]= "timelineDatesconfig"> -->
+               <!--  <div class="swiper-wrapper">
+                     
+                        <div class="swiper-slide" *ngFor="let singleSlide of homeAwardYear"  data-year=""><div>{{singleSlide.name}}</div></div>
+               
+                </div> -->
+                <!-- </swiper> -->
+
+            </div>
+            
+            <!-- Add Arrows -->
+           <!--  <section class="timeline-block">
+            <div class="timeline-buttons-container">
+                <div class="timeline-button-next"> <i class="icon-next-btn"></i></div>
+                <div class="timeline-button-prev"><i class="icon-prev-btn"></i></div>
+            </div>
+        </section> -->
+        </div>
+        </section>
+    <section id="tabs" class="latest-news home-page-news" >
+        <div class="latest-section-content">
+            <div class="swastik-heading"><h2>Latest</h2></div>
+        </div>
+        <div class="col-md-12">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">News</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Social Media</a>
+                         
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="swiper-container  latest-news-container" id="news-part">
+                                <owl-carousel-o [options]="newsOptions">
+                                    <ng-container *ngFor="let singleslide of homeLatestNews">
+                                        <ng-template carouselSlide [id]="singleslide.id">
+                                            <div class="news-box">
+                                                <div class="top-box">
+                                                    <span class="logo-left"> <img [src]="singleslide.inner_logo" alt="" class="img-fluid"></span>
+                                                    <span class="date float-right">{{ singleslide.date}}</span>
+                                                </div>
+                                                <img [src]="singleslide.imageurl" alt="" class="img-fluid">
+                                                <div class="title">
+                                                 {{singleslide.title}}
+                                                </div>
+                                                <div class="description" [innerHtml]='singleslide.content'></div>
+                                                <a [href]="singleslide.permalink" class="readmore">Read more</a>
+                                            </div>
+                                        </ng-template>
+                                    </ng-container>
+                                </owl-carousel-o>
+                               <!--  <swiper [config]="newsconfig"> -->
+                                <!-- <div class="swiper-wrapper">
+                                
+                                  <div class="swiper-slide" *ngFor="let singleslide of homeLatestNews">
+                                      <div class="news-box">
+                                        <div class="top-box">
+                                            <span class="logo-left"> <img [src]="singleslide.inner_logo" alt="" class="img-fluid"></span>
+                                            <span class="date float-right">{{ singleslide.date}}</span>
+                                        </div>
+                                        <img [src]="singleslide.imageurl" alt="" class="img-fluid">
+                                        <div class="title">
+                                         {{singleslide.title}}
+                                        </div>
+                                        <div class="description" [innerHtml]='singleslide.content'></div>
+                                        <a [href]="singleslide.permalink" class="readmore">Read more</a>
+                                    </div>
+                                
+                                  </div>
+                             
+                                 </div> -->
+                                 
+                                <!-- Add Pagination -->
+                                <!-- <div class="swiper-pagination"></div>
+                                <div class="swiper-button-next next-swiper" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"><i class="icon-next-btn icon_button"></i></div>
+                                <div class="swiper-button-prev previous-swiper" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"><i class="icon-prev-btn icon_button"></i></div> -->
+                                <!-- Add Arrows -->
+                            <!-- </swiper> -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="news-box social-box" >
+                               
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+          </section>
+          <section class="register-section">
+	    	<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="register-heading">
+							<h1>Stay Connected with us!</h1>
+							<h5>Subscribe to our newsletter, be a part of Swastik and you won't miss a thing!</h5>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="register-content">
+						
+                            <div class="emaillist">
+                                <form action="#" method="post" (ngSubmit)="onSubmit()" #f="ngForm" name="form" class="es_subscription_form es_shortcode_form subscribe-message" id="es_subscription_form_1659682720" data-source="ig-es" autocomplete="off" *ngIf="isFormopen">
+                                    <div class="es-field-wrap">
+                                      <label><input class="es_required_field es_txt_email" [(ngModel)]="form.email"  type="email" name="email" value="" placeholder="Enter email address" required=""></label></div>				
+                                    <span *ngIf="emailFieldcheck" class="erroremail">Please Enter Email id</span>
+                                                                    <!-- <input type="submit" name="submit" class="es_subscription_form_submit es_submit_button es_textbox_button" id="es_subscription_form_submit_1659682720" value=""/> -->
+                                    <button type="submit" class="es_subscription_form_submit es_submit_button es_textbox_button btn-arrow" id="es_subscription_form_submit_1580205946"><i class="icon-right-arrow" aria-hidden="true"></i></button>
+                    
+                                </form>
+                                <span *ngIf="errorMessage!=''" class="erroremail">{{errorMessage}}</span>
+                                <span class="es_subscription_message" id="es_subscription_message_1659682720" *ngIf="succMessage!=''">{{succMessage}}</span>
+                            </div>
+                    
+                           <div>
+                            <p>By signing up below, I agree to the Swastik Production Privacy Policy and Terms of Use.</p>
+                            </div>
+                        </div>
+						
+					</div>
+					
+				</div>	
+			</div>
+			</section>
+
+</div>

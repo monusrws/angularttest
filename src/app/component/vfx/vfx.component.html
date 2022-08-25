@@ -1,0 +1,35 @@
+<section class="about-us-banner" *ngIf="vfxBannerImage !=''">
+    <img src="{{ vfxBannerImage }}" alt="">
+</section>
+
+<div class="banner-menu-link">
+<ul>
+<li><a href="{{siteUrl}}">Home</a></li>
+<li><span>{{vfxTitle}}</span></li>
+</ul>
+</div>
+<div class="container">
+<section class="about-us-content">
+    <div class="main-content vfx-main-content">
+        <h2>VFX Services</h2>
+        <p [innerHTML] = "vfxContent"></p>
+ </div>
+</section>
+
+<section class="vfx-details" *ngIf="vfxPost?.length">
+<div class="row">
+
+<div class="col-sm-6 vfx-images" *ngFor="let singlerow of vfxPost">
+          <h2>{{ singlerow.title}}</h2>
+    <div class="vfx-image-content">
+          <div class="v-details-left"><img src="{{ singlerow.left_image}}" class="vfx-img-right">
+            <p>Before</p>
+      </div>
+          <div class="v-details-right"><img src="{{ singlerow.right_image}}" class="vfx-img-left">
+           <p>After</p>
+      </div>
+    </div>
+</div>
+
+</div>
+</section>

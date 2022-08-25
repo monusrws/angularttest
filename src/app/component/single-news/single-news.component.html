@@ -1,0 +1,52 @@
+<div class="main-wrapper">
+		
+		<div class="banner-menu-link">
+			 <ul>
+                    <li><a href="{{siteurl}}">Home / Latest News</a></li>
+                    <li><span><a href="">News</a></span></li>
+                </ul>
+			</div>
+		<div class="container">
+			<section class="single-page-content">
+            <div class=""><img src="{{ singleNewsInnerlogo }}"></div>
+				<div class="single-heading-title">
+					<p>{{singleNewsTitle}}</p>
+				</div>
+				<div class="single-heading-date">
+					
+					<div class="single-date-left">{{singleNewsDate}}</div>
+
+					<div class="single-img-right"><!-- <i class="icon-share"></i> --></div>
+				</div>
+				<div class="main-single-detail">
+					
+					<img src="{{singleNewsImageUrl}}">
+                    <div [innerHtml]="singleNewsContent"></div>
+				
+				</div>
+			</section>
+			<section class="related-news-content">
+				<div class="related-news-heading"><h2>Related News</h2></div>
+				<div class="related-news-blocks">
+				  <div class="row" *ngIf="singleNewsRelatedPost?.length">
+				  
+					<div class="col-12  col-sm-12  col-md-6  col-lg-4 col-xl-4" *ngFor="let singleRow of singleNewsRelatedPost">
+					 <div class="news-box">
+						 <div class="top-box">
+							 <span class="logo-left"> <img src="{{singleRow.inner_logo}}" alt="" class="img-fluid"></span>
+							 <span class="date float-right">{{singleRow.date}}</span>
+						 </div>
+						 <img src="{{singleRow.imageurl}}" alt="" class="img-fluid">
+						 <div class="title">
+						   {{singleRow.title}}
+						 </div>
+						 <div class="description" [innerHtml]="singleRow.content"></div>
+						 <a href="{{singleRow.permalink}}" class="readmore">Read more</a>
+					 </div>
+					</div>
+					
+				  </div>
+				</div>
+			</section>
+			
+		</div>

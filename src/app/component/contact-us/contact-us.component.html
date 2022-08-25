@@ -1,0 +1,123 @@
+<section class="about-us-banner contact-us-banner" *ngIf="contactBannerImage !=''">
+    <img src="{{contactBannerImage}}" alt="">
+</section>
+<div class="banner-menu-link">
+    <ul>
+        <li><a href="{{siteurl}}">Home</a></li>
+        <li><span>{{contactTitle}}</span></li>
+    </ul>
+</div>
+<div class="container">
+<section class="contact-us-content">
+        <div class="main-content contact_us-content">
+        <p [innerHtml] = "contactContent"></p>
+        </div>
+</section>
+<section class="contact-us-main-content">
+    <div class="contact-us__main">
+        <div class="row">
+            <div class="col-sm-6">
+                
+                <div class="contact-us-details">
+               
+                    <h2 *ngIf="contact_heading!=''">{{ contact_heading }}</h2>
+                
+                
+                    <div class="contact-us-address" *ngIf="contact_address!=''">
+                        <p [innerHtml] = "contact_address"> </p>
+                    <div>
+               
+                            <button class="locate"><i class="icon-location"></i>Locate</button>
+                        </div>
+                        
+                        <div class="contact-details">
+                       
+                            <div class="contact-number-bullet"  *ngIf="telephone_img!=''"><img src="{{telephone_img}}"></div>
+                        
+                            <div class="contact-number"  *ngIf="contact_no!=''"><a href="tel:{{ contact_no}}" >{{contact_no}}</a></div>
+                      
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-us-portfolio">
+                   
+                    <h2 *ngIf="portfolio_heading!=''">{{portfolio_heading}}</h2>
+               
+                    <div class="contact-details">
+                        
+                        <div class="contact-number-bullet-mail" *ngIf="mail_img!=''"><img src="{{mail_img}}"></div>
+                       
+                        <div class="contact-mail" *ngIf="portfolio_email!=''"><a href="mailto:{{portfolio_email}}" >{{portfolio_email}}</a></div>	
+                        
+                    </div>
+                    <div class="contact-details">
+                        
+                        <div class="contact-number-bullet" *ngIf="telephone_img!=''"><img src="{{telephone_img}}"></div>
+                        
+                       
+                        <div class="contact-number" *ngIf="portfolio_contact!=''"><a href="tel:{{portfolio_contact}}" >{{portfolio_contact}}</a></div>
+                      
+                        </div>		
+                </div>
+                <div class="contact-us-collaborate">
+                    
+                    <h2 *ngIf="collaborate_heading!=''">{{collaborate_heading}}</h2>
+                
+                    <div class="contact-details">
+                        
+                        <div class="contact-number-bullet-mail" *ngIf="mail_img!=''"><img src="{{mail_img}}"></div>	
+                       
+                        <div class="contact-mail" *ngIf="collaborate_email!=''collaborate_email"><a href="mailto:{{collaborate_email}}" >{{collaborate_email}}</a></div>
+                        
+                        </div>
+                        <div class="contact-details">
+                        
+                        <div class="contact-number-bullet" *ngIf="telephone_img!=''"><img src="{{telephone_img}}"></div>
+                       
+                        <div class="contact-number" *ngIf="collaborate_contact_no!=''"><a href="tel:{{collaborate_contact_no}}" >{{collaborate_contact_no}}</a></div>
+                       
+                        </div>		
+                </div>
+               
+                
+                
+            </div>
+            <div class="col-sm-6">
+                <div class="contact-us-details">
+                    <h2>Reach Out to Us</h2>
+                    <div id="asaphide">
+                        <div role="form" class="wpcf7" id="wpcf7-f114-o1" lang="en-US" dir="ltr">
+                            <div class="screen-reader-response"></div>
+                            <form action="" method="post" (ngSubmit)="onSubmit()" #f="ngForm" class="wpcf7-form" novalidate="novalidate">
+                                
+                                <p><label>Name*<br>
+                                    <span class="wpcf7-form-control-wrap your-name"><input type="text" [(ngModel)]="form.name" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
+                                    <span *ngIf="nameFieldcheck" class="erroremail">Please Enter Name</span>
+                                </p>
+                                <p><label>E-mail Address*<br>
+                                    <span class="wpcf7-form-control-wrap your-email"><input type="email" [(ngModel)]="form.email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false"></span> </label>
+                                    <span *ngIf="emailFieldcheck" class="erroremail">Please Enter Email id</span>
+                                </p>
+                                   
+                                    <p><label> Phone Number*<br>
+                                    <span class="wpcf7-form-control-wrap your-phone"><input type="text" name="your-phone" value="" [(ngModel)]="form.phone" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
+                                    <span *ngIf="phoneFieldcheck" class="erroremail">Please Enter Phone Number</span>
+                                </p>
+                                <p><label>Message*<br>
+                                    <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" [(ngModel)]="form.message" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></textarea></span> </label>
+                                    <span *ngIf="msgFieldcheck" class="erroremail">Please Enter Message</span>
+                                </p>
+                                <p><input type="submit" *ngIf="isSubmitbutton" value="Submit" class="wpcf7-form-control wpcf7-submit">
+                                    <input type="button" *ngIf="isLoadingbutton" value="Loading..." class="wpcf7-form-control wpcf7-submit"></p>
+                                <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                <span *ngIf="errorMessage!=''" class="erroremail">{{errorMessage}}</span>
+                                <span class="es_subscription_message" id="es_subscription_message_1659682720" *ngIf="succMessage!=''">{{succMessage}}</span>
+                            </form>
+                        </div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
